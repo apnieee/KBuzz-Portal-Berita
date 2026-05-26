@@ -26,10 +26,10 @@ class NewsResource extends Resource
     {
         $query = parent::getEloquentQuery();
 
-        if (auth()->user()->isAdmin()) {
+        if (auth('admin')->user()?->isAdmin()) {
             return $query;
         }
-        return $query->where('author_id', auth()->user()->author->id);
+        return $query->where('author_id', auth('admin')->user()?->author->id);
     }
 
     public static function form(Form $form): Form
@@ -40,7 +40,7 @@ class NewsResource extends Resource
                     ->relationship('author', 'username')
                     ->required()
                     ->options(function () {
-                        $user = auth()->user();
+                        $user = auth('admin')->user();
                         if ($user->isAdmin()) {
                             return Author::pluck('username', 'id'); 
                         } elseif ($user->author) {
@@ -53,7 +53,7 @@ class NewsResource extends Resource
                         return $user->author ? $user->author->id : null;
                     })
                     ->disabled(function () {
-                        return !auth()->user()->isAdmin();
+                        return !auth('admin')->user()?->isAdmin();
                     })
                     ->dehydrated(true),
                 Forms\Components\Select::make('news_category_id')

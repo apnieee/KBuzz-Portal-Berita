@@ -21,12 +21,12 @@ class AuthorResource extends Resource
 
     public static function canViewAny(): bool
     {
-        return auth()->user()->isAdmin();
+        return auth('admin')->user()?->isAdmin() ?? false;
     }
 
     public static function canCreate(): bool
     {
-        return auth()->user()->isAdmin();
+        return auth('admin')->user()?->isAdmin() ?? false;
     }
 
     public static function form(Form $form): Form

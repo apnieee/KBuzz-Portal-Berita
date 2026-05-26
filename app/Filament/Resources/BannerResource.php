@@ -21,12 +21,12 @@ class BannerResource extends Resource
 
      public static function canViewAny(): bool
     {
-        return auth()->user()->isAdmin();
+        return auth('admin')->user()?->isAdmin();
     }
 
     public static function canCreate(): bool
     {
-        return auth()->user()->isAdmin();
+        return auth('admin')->user()?->isAdmin();
     }
 
 

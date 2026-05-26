@@ -22,12 +22,12 @@ class UserResource extends Resource
 
     public static function canViewAny(): bool
     {
-        return auth()->user()->isAdmin();
+        return auth('admin')->user()?->isAdmin();
     }
 
     public static function canCreate(): bool
     {
-        return auth()->user()->isAdmin();
+        return auth('admin')->user()?->isAdmin();
     }
 
     public static function form(Form $form): Form
@@ -49,9 +49,10 @@ class UserResource extends Resource
                     ->options([
                         'admin' => 'Admin',
                         'author' => 'Author',
+                        'user' => 'User',
                     ])
                     ->required()
-                    ->default('author'),
+                    ->default('user'),
                 Forms\Components\TextInput::make('password')
                     ->label('Password')
                     ->password()
@@ -80,18 +81,21 @@ class UserResource extends Resource
                 ->searchable()
                 ->sortable(),
             Tables\Columns\TextColumn::make('email')
-                ->label('Role')
+                ->label('Email')
                 ->searchable()
                 ->sortable(),
             Tables\Columns\TextColumn::make('role')
-                ->label('Name')
+                ->label('Role')
                 ->badge()
                 ->color(fn(string $state): string => match ($state){
                     'admin' => 'danger',
                     'author' => 'success',
+                    'user' => 'info',
+                    default => 'gray',
                 }),
             Tables\Columns\TextColumn::make('author.username')
                 ->label('Username')
+                ->default('-')
                 ->searchable(),
             Tables\Columns\TextColumn::make('created_at')
                 ->label('Dibuat')

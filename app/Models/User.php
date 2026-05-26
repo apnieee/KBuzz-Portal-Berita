@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
-{
+{   
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -66,5 +66,10 @@ class User extends Authenticatable
     public function isAuthor(): bool
     {
         return $this->role === 'author';
+    }
+
+    public function canAccessPanel(\Filament\Panel $panel): bool
+    {
+    return in_array($this->role, ['admin', 'author']);
     }
 }

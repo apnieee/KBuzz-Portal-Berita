@@ -2,13 +2,23 @@
 
 namespace App\Filament\Pages;
 
+use App\Models\User;
+use App\Models\Author;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
+use Filament\Notifications\Notification;
+use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use Filament\Http\Responses\Auth\Contracts\RegistrationResponse;
 use Filament\Forms\Form;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Textarea;
 use Filament\Pages\Page;
 use Filament\Pages\Auth\Register as BaseRegister;
 
 class Register extends BaseRegister
 {
+    public ?array $data = [];
     public function form(Form $form): Form
     {
         return $form
@@ -16,11 +26,6 @@ class Register extends BaseRegister
             TextInput::make('name')
             ->label('Name')
             ->required(),
-        TextInput::make('username')
-            ->label('Username')
-            ->required()
-            ->maxLength(255)
-            ->unique(Author::class),
         TextInput::make('email')
             ->label('Email')
             ->email()
@@ -38,20 +43,8 @@ class Register extends BaseRegister
             ->password()
             ->required()
             ->maxLength(8)
-            ->dehydrated('false'),
-        FileUpload::make('avatar')
-            ->label('Avatar')
-            ->image()
-            ->required()
-            ->disk('public')
-            ->directory('avatars'),
-        Textarea::make('bio')
-            ->label('Bio')
-            ->password()
-            ->required()
-            ->maxLength(1000)
-            ->rows('3'),
-        ])->statePath('Data');;
+            ->dehydrated(false),
+        ])->statePath('data');
     }
 
     public function register(): ?RegistrationResponse
@@ -75,15 +68,7 @@ class Register extends BaseRegister
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => Hash::make ($data['password']),
-                'role' => 'author'
-            ]);
-
-            //create author record with user_id relationship
-            $author = Author::create([
-                'user_id' => $user->id,
-                'username' => $data['username'],
-                'avatar' => $data['avatar'],
-                'bio' => $data['bio'],
+                'role' => 'user'
             ]);
 
             event(new Registered($user));
@@ -92,7 +77,7 @@ class Register extends BaseRegister
 
             Notification::make()
                 ->title('Registrasi berhasil')
-                ->succes()
+                ->success()
                 ->send();
             return app(RegistrationResponse::class);
     }

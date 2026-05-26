@@ -18,10 +18,12 @@ class LandingController extends Controller
             ->with('news.newsCategory', 'news.author.user')
             ->get();
         $featured = News::where('is_featured', true)
+            ->whereHas('newsCategory')
             ->with('newsCategory')
             ->get();
 
         $news = News::orderBy('created_at', 'desc')
+            ->whereHas('newsCategory')
             ->with('newsCategory')
             ->take(4)
             ->get();

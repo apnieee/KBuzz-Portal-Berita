@@ -94,19 +94,23 @@
 
         <!-- Berita 1 -->
         @foreach ($news->skip(1) as $item)
-            <a href="{{ route('news.show' , $item->slug) }}"
-          class="relative col-span-5 flex flex-col h-fit md:flex-row gap-3 border border-slate-200 p-3 rounded-xl hover:border-primary hover:cursor-pointer">
-          <div class="bg-primary text-white rounded-full w-fit px-4 py-1 font-normal ml-2 mt-2 absolute text-sm">
-            {{ $item->newsCategory->title }}
-          </div>
-          <img src="{{ asset('storage/' . $item->thumbnail) }}" alt="berita2" class="rounded-xl md:max-h-48" 
-          style="width: 250px; object-fit: cover;">
-          <div class="mt-2 md:mt-0">
-            <p class="font-semibold text-lg">{{ $item->title }}</p>
-            <p class="text-slate-400 mt-3 text-sm font-normal">
-              {!! \Str::limit($item->content ?? '', 100) !!}
-            </p>
-          </div>
+        <a href="{{ route('news.show' , $item->slug) }}"
+        class="relative col-span-5 flex flex-col md:flex-row gap-4 border border-slate-200 p-3 rounded-xl hover:border-primary transition">
+            <div class="bg-primary text-white rounded-full w-fit px-4 py-1 ml-2 mt-2 absolute text-sm">
+                {{ $item->newsCategory->title ?? 'News' }}
+            </div>
+            <img 
+                src="{{ asset('storage/' . $item->thumbnail) }}" 
+                alt="berita"
+                class="rounded-xl w-full md:w-[220px] h-[180px] object-cover flex-shrink-0">
+            <div class="flex-1">
+                <p class="font-bold text-lg leading-snug">
+                    {{ $item->title }}
+                </p>
+                <p class="text-slate-400 mt-2 text-sm leading-relaxed">
+                    {!! \Str::limit(strip_tags($item->content ?? ''), 120) !!}
+                </p>
+            </div>
         </a>
         @endforeach
       </div>

@@ -23,7 +23,7 @@ class NewsCategoryResource extends Resource
 
     public static function canCreate(): bool
     {
-        return auth()->user()->isAdmin();
+        return auth('admin')->user()?->isAdmin();
     }
 
     public static function form(Form $form): Form
@@ -51,8 +51,8 @@ class NewsCategoryResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make()->visible(auth()->user()->isAdmin()),
-                Tables\Actions\DeleteAction::make()->visible(auth()->user()->isAdmin()),
+                Tables\Actions\EditAction::make()->visible(auth('admin')->user()?->isAdmin()),
+                Tables\Actions\DeleteAction::make()->visible(auth('admin')->user()?->isAdmin()),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

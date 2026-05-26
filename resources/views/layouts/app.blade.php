@@ -21,7 +21,16 @@
   </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="{{ asset('js/filament/swiper.js') }}"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const swiper = new Swiper('.mySwiper', {
+          slidesPerView: 1.5,
+          spaceBetween: 20,
+          centeredSlides: true,
+          loop: true,
+        });
+      });
+    </script>
 </body>
 
 </html>

@@ -214,3 +214,6 @@ Pastikan pemanggilan di blade menggunakan path yang benar:
 
 ### news
 <img src="berita.png" width="500">
+
+### users
+<img src="user.png" width="500">

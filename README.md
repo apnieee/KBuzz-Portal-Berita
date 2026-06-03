@@ -182,3 +182,6 @@ Pastikan pemanggilan di blade menggunakan path yang benar:
 
 ### halaman database
 <img src="database.png" width="500">
+
+### tabel author
+<img src="authors.png" width="500">

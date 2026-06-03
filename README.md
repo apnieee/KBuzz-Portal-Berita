@@ -199,3 +199,6 @@ Pastikan pemanggilan di blade menggunakan path yang benar:
 
 ### login
 <img src="login.png" width="500">
+
+### dashboard
+<img src="login.png" width="500">

@@ -169,3 +169,6 @@ Pastikan pemanggilan di blade menggunakan path yang benar:
 
 ### kategori concert & event
 <img src="event.png" width="500">
+
+### kategori k-drama
+<img src="kdrama.png" width="500">

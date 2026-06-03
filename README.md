@@ -191,3 +191,6 @@ Pastikan pemanggilan di blade menggunakan path yang benar:
 
 ### tabel news
 <img src="news.png" width="500">
+
+### tabel news categories
+<img src="kategori.png" width="500">

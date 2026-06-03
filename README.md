@@ -188,3 +188,6 @@ Pastikan pemanggilan di blade menggunakan path yang benar:
 
 ### tabel banner
 <img src="banners.png" width="500">
+
+### tabel news
+<img src="news.png" width="500">

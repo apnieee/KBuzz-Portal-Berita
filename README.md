@@ -176,3 +176,9 @@ Pastikan pemanggilan di blade menggunakan path yang benar:
 ### login
 <img src="login 1.png" width="500">
 <img src="login 2.png" width="500">
+
+
+## Database
+
+### halaman database
+<img src="database.png" width="500">

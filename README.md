@@ -211,3 +211,6 @@ Pastikan pemanggilan di blade menggunakan path yang benar:
 
 ### news category
 <img src="kategori admin.png" width="500">
+
+### news
+<img src="berita.png" width="500">

@@ -155,4 +155,5 @@ Pastikan pemanggilan di blade menggunakan path yang benar:
 ## Tampilan Website
 
 ### halaman berita
-<img src="halaman berita 1.png" width="200"> <img src="halaman berita 2.png" width="200"> <img src="halaman berita 3.png" width="200">
+<img src="halaman berita 1.png" width="500"> <img src="halaman berita 2.png" width="500"> 
+<img src="halaman berita 3.png" width="500">

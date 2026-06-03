@@ -163,3 +163,6 @@ Pastikan pemanggilan di blade menggunakan path yang benar:
 
 ### kategori girlgroup
 <img src="girlgrup.png" width="500">
+
+### kategori comeback
+<img src="comeback.png" width="500">

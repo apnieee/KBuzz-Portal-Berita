@@ -217,6 +217,3 @@ Pastikan pemanggilan di blade menggunakan path yang benar:
 
 ### users
 <img src="user.png" width="500">
-
-### tabel users
-<img src="users.png" width="500">

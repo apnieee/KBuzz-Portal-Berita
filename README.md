@@ -185,3 +185,6 @@ Pastikan pemanggilan di blade menggunakan path yang benar:
 
 ### tabel author
 <img src="authors.png" width="500">
+
+### tabel banner
+<img src="banners.png" width="500">

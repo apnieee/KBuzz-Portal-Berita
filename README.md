@@ -157,3 +157,6 @@ Pastikan pemanggilan di blade menggunakan path yang benar:
 ### halaman berita
 <img src="halaman berita 1.png" width="500"> <img src="halaman berita 2.png" width="500"> 
 <img src="halaman berita 3.png" width="500">
+
+### kategori boygroup
+<img src="boygrup.png" width="500">

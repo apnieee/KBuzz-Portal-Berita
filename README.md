@@ -202,3 +202,6 @@ Pastikan pemanggilan di blade menggunakan path yang benar:
 
 ### dashboard
 <img src="login.png" width="500">
+
+### author
+<img src="author.png" width="500">

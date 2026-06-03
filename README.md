@@ -205,3 +205,6 @@ Pastikan pemanggilan di blade menggunakan path yang benar:
 
 ### author
 <img src="author.png" width="500">
+
+### banner
+<img src="banner.png" width="500">
